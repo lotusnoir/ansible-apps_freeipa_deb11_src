@@ -3,12 +3,8 @@
   ansible.builtin.package_facts:
     manager: auto
 
-- name: "Set fact based on package existence"
-  ansible.builtin.set_fact:
-    freeipa_client_installed: "'freeipa-client' in ansible_facts.packages"
-
 - name: "Install if not present"
-  when: not freeipa_client_installed
+  when: "'freeipa-client' not in ansible_facts.packages"
   block:
     - name: "DEBIAN11: Install FreeIPA required packages"
       ansible.builtin.package:
