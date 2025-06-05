@@ -4,7 +4,7 @@
     manager: auto
 
 - name: "Install if not present"
-  when: "'freeipa-client' not in ansible_facts.packages"
+  when: "'freeipa-common' not in ansible_facts.packages"
   block:
     - name: "DEBIAN11: Install FreeIPA required packages"
       ansible.builtin.package:
