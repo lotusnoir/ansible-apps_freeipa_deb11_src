@@ -15,7 +15,7 @@
       retries: 12
       delay: 10
       until: __pkg_result is success
-    
+
     - name: "DEBIAN11:  Ensure xz-utils is present"
       ansible.builtin.package:
         name: xz-utils
@@ -24,7 +24,7 @@
       retries: 12
       delay: 10
       until: __pkg_result is success
-    
+
     - name: "DEBIAN11: Copy freeipa deb files"
       ansible.builtin.copy:
         src: "{{ item }}"
@@ -32,7 +32,7 @@
         mode: '0644'
       with_items:
         - "{{ freeipa_client_deb_pkgs }}"
-    
+
     - name: "DEBIAN11: Install deb packages from the internet"
       ansible.builtin.apt:
         deb: "/tmp/{{ item }}"
