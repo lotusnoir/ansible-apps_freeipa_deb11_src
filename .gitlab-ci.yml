@@ -14,7 +14,6 @@ variables:
 ######################################################
 .molecule_job_template: &molecule_job_template
   stage: molecule
-  image: lotusnoir/molecule_play:latest
   rules:
     # Exécuter uniquement si un fichier pertinent change
     - changes:
@@ -34,6 +33,7 @@ variables:
 ######################################################
 molecule_debian11:
   <<: *molecule_job_template
+  image: lotusnoir/molecule_play:latest
   script:
     - MOLECULE_DISTRIB=debian11 molecule test
 
